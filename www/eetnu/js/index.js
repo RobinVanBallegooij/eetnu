@@ -78,6 +78,8 @@ function buildVenuesUris(settings){
 $(document).on('pageinit', '#settings', function(){
     $('#save').on('tap', function(){
         save();
+        showToast();
+        $('#save').text("saved");
     });
 
     var distance = window.localStorage.getItem("distance");
@@ -120,6 +122,10 @@ function save() {
     if(refreshRestaurants === true){
         loadVenues();
     }
+}
+
+function showToast() {
+    window.plugins.toast.showLongBottom('Hello there!', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
 }
 
 function updateTagsSettings(){
